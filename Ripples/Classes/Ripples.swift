@@ -71,7 +71,7 @@ open class Ripples: CAReplicatorLayer, CAAnimationDelegate {
     
     open var rippleInterval: TimeInterval = 0
     
-    open var timingFunction: CAMediaTimingFunction? = CAMediaTimingFunction(name: kCAMediaTimingFunctionDefault) {
+    open var timingFunction: CAMediaTimingFunction? = CAMediaTimingFunction(name: CAMediaTimingFunction.default) {
         didSet {
             if let animationGroup = animationGroup {
                 animationGroup.timingFunction = timingFunction
@@ -131,12 +131,12 @@ open class Ripples: CAReplicatorLayer, CAAnimationDelegate {
     fileprivate func setupNotifications() {
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(save),
-                                               name: NSNotification.Name.UIApplicationDidEnterBackground,
+                                               name: NSNotification.Name.UIApplication.didEnterBackground,
                                                object: nil)
         
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(resume),
-                                               name: NSNotification.Name.UIApplicationWillEnterForeground,
+                                               name: NSNotification.Name.UIApplication.willEnterForeground,
                                                object: nil)
     }
     
